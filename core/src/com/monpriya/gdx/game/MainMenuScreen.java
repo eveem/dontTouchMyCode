@@ -43,7 +43,6 @@ public class MainMenuScreen extends ScreenAdapter {
 			System.out.println(touchPoint.y);
 			if (playBounds.contains(touchPoint.x, touchPoint.y)) {
 //				Assets.playSound(Assets.clickSound);
-				System.out.println("eiei");
 				game.setScreen(new GameScreen());
 				return;
 			}
