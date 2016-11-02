@@ -8,22 +8,16 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class WorldRenderer {
 
 	private Texture backgroundImage;
-	private ProjectGame game;
-//	private World world;
 	private SpriteBatch batch;
 	
 	public WorldRenderer(ProjectGame game, World world) {
-        this.game = game;
         batch = game.batch;
- 
-//        this.world = world;
         backgroundImage = new Texture("playScreen.jpg");
     }
 	
 	public void render() {
 		GL20 gl = Gdx.gl;
 		gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		
 		renderBackground();
     }
 	

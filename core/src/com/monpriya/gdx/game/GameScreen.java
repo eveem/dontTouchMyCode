@@ -1,19 +1,19 @@
 package com.monpriya.gdx.game;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
-import com.badlogic.gdx.graphics.GL20;
 
 public class GameScreen extends ScreenAdapter {
 	
 	ProjectGame game;
 	World world;
 	WorldRenderer worldrenderer;
+	int answer;
 	
 	public GameScreen (ProjectGame game) {
 		this.game = game;
 		world = new World();
 		worldrenderer = new WorldRenderer(game, world);
+		answer = 0;
 	}
 	
 	@Override
