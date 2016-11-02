@@ -15,10 +15,9 @@ public class MainMenuScreen extends ScreenAdapter {
 	private SpriteBatch batch;
 	
 	OrthographicCamera guiCam;
-	Rectangle soundBounds;
 	Rectangle playBounds;
-	Rectangle highscoresBounds;
-	Rectangle helpBounds;
+	Rectangle howtoBounds;
+	Rectangle exitBounds;
 	Vector3 touchPoint;
 	
 	MainMenuScreen (ProjectGame projectGame) {
@@ -28,11 +27,9 @@ public class MainMenuScreen extends ScreenAdapter {
 		
 		guiCam = new OrthographicCamera(800, 800);
 		guiCam.position.set(800 / 2, 800 / 2, 0);
-//		soundBounds = new Rectangle(0, 0, 64, 64);
 		playBounds = new Rectangle(-102, -95, 222, 55);
-//		playBounds = new Rectangle(160 - 150, 200 + 18, 300, 36);
-//		highscoresBounds = new Rectangle(160 - 150, 200 - 18, 300, 36);
-//		helpBounds = new Rectangle(160 - 150, 200 - 18 - 36, 300, 36);
+		howtoBounds = new Rectangle(-140, 180, 290, 55);
+		exitBounds = new Rectangle(-40, -265, 95, 55);
 		touchPoint = new Vector3();
 	}
 	
@@ -46,24 +43,15 @@ public class MainMenuScreen extends ScreenAdapter {
 				game.setScreen(new GameScreen());
 				return;
 			}
-//			if (highscoresBounds.contains(touchPoint.x, touchPoint.y)) {
+//			if (howtoBounds.contains(touchPoint.x, touchPoint.y)) {
 //				Assets.playSound(Assets.clickSound);
 //				game.setScreen(new HighscoresScreen(game));
 //				return;
 //			}
-//			if (helpBounds.contains(touchPoint.x, touchPoint.y)) {
+			if (exitBounds.contains(touchPoint.x, touchPoint.y)) {
 //				Assets.playSound(Assets.clickSound);
-//				game.setScreen(new HelpScreen(game));
-//				return;
-//			}
-//			if (soundBounds.contains(touchPoint.x, touchPoint.y)) {
-//				Assets.playSound(Assets.clickSound);
-//				Settings.soundEnabled = !Settings.soundEnabled;
-//				if (Settings.soundEnabled)
-//					Assets.music.play();
-//				else
-//					Assets.music.pause();
-//			}
+				Gdx.app.exit();
+			}
 		}
 	}
 	
