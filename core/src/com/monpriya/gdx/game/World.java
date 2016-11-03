@@ -20,31 +20,38 @@ public class World {
 		this.turn = 0;
 		guiCam = new OrthographicCamera(800, 800);
 		guiCam.position.set(800 / 2, 800 / 2, 0);
-		choice1Bounds = new Rectangle(-102, -95, 222, 55);
-		choice2Bounds = new Rectangle(-140, 180, 290, 55);
-		choice3Bounds = new Rectangle(-40, -265, 95, 55);
-		choice4Bounds = new Rectangle(-40, -265, 95, 55);
+		choice1Bounds = new Rectangle(-130, -295, 260, 100);
+		choice2Bounds = new Rectangle(130, -295, 260, 100);
+		choice3Bounds = new Rectangle(-130, -390, 260, 100);
+		choice4Bounds = new Rectangle(130, -390, 260, 100);
 		touchPoint = new Vector3();
 	}
 	
 	public void update () {
 		if (Gdx.input.justTouched()) {
 			guiCam.unproject(touchPoint.set(Gdx.input.getX(), Gdx.input.getY(), 0));
-			turn++;
-//			if (playBounds.contains(touchPoint.x, touchPoint.y)) {
+			System.out.println(touchPoint.x);
+			System.out.println(touchPoint.y);
+			if (choice1Bounds.contains(touchPoint.x, touchPoint.y)) {
 //				Assets.playSound(Assets.clickSound);
-//				game.setScreen(new GameScreen(game));
-//				return;
-//			}
-//			if (howtoBounds.contains(touchPoint.x, touchPoint.y)) {
+				System.out.println("1");
+				turn++;
+			}
+			if (choice2Bounds.contains(touchPoint.x, touchPoint.y)) {
 //				Assets.playSound(Assets.clickSound);
-//				game.setScreen(new HowtoScreen(game));
-//				return;
-//			}
-//			if (exitBounds.contains(touchPoint.x, touchPoint.y)) {
+				System.out.println("2");
+				turn++;
+			}
+			if (choice3Bounds.contains(touchPoint.x, touchPoint.y)) {
 //				Assets.playSound(Assets.clickSound);
-//				Gdx.app.exit();
-//			}
+				System.out.println("3");
+				turn++;
+			}
+			if (choice4Bounds.contains(touchPoint.x, touchPoint.y)) {
+//				Assets.playSound(Assets.clickSound);
+				System.out.println("4");
+				turn++;
+			}
 		}
 	}
 	
