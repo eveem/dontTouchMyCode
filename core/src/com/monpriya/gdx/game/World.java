@@ -15,7 +15,7 @@ public class World {
 	OrthographicCamera guiCam;
 	Vector3 touchPoint;
 	Rectangle choice1Bounds, choice2Bounds, choice3Bounds, choice4Bounds;
-	public int answer;
+	public int task;
 	
 	public World (ProjectGame game) {
 		rand = new Random();
@@ -28,7 +28,7 @@ public class World {
 		choice3Bounds = new Rectangle(-130, -390, 260, 100);
 		choice4Bounds = new Rectangle(130, -390, 260, 100);
 		touchPoint = new Vector3();
-		answer = rand.nextInt(100);
+		task = rand.nextInt(100);
 	}
 	
 	public void update () {
@@ -52,9 +52,11 @@ public class World {
 //				Assets.playSound(Assets.clickSound);
 				turn++;
 			}
-			if(turn%2==1)
-			{
+			if(turn%2==0) {
 				showTurn--;
+			}
+			if(turn<=0) {
+				return;
 			}
 		}
 	}
