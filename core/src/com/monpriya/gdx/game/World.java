@@ -17,6 +17,7 @@ public class World {
 	Rectangle choice1Bounds, choice2Bounds, choice3Bounds, choice4Bounds;
 	public int task;
 	public int current;
+	public int number[] = new int [4];
 	
 	public World (ProjectGame game) {
 		rand = new Random();
@@ -31,6 +32,11 @@ public class World {
 		touchPoint = new Vector3();
 		task = rand.nextInt(100);
 		current = 0;
+		
+		number[0] = rand.nextInt(50);
+		number[1] = rand.nextInt(50);
+		number[2] = rand.nextInt(10);
+		number[3] = rand.nextInt(10);
 	}
 	
 	public void update () {
@@ -42,6 +48,12 @@ public class World {
 					showTurn--;
 				}
 				turn++;
+				current += number[0];
+				
+				number[0] = rand.nextInt(50);
+				number[1] = rand.nextInt(50);
+				number[2] = rand.nextInt(10);
+				number[3] = rand.nextInt(10);
 			}
 			if (choice2Bounds.contains(touchPoint.x, touchPoint.y)) {
 //				Assets.playSound(Assets.clickSound);
@@ -49,6 +61,12 @@ public class World {
 					showTurn--;
 				}
 				turn++;
+				current -= number[1];
+				
+				number[0] = rand.nextInt(50);
+				number[1] = rand.nextInt(50);
+				number[2] = rand.nextInt(10);
+				number[3] = rand.nextInt(10);
 			}
 			if (choice3Bounds.contains(touchPoint.x, touchPoint.y)) {
 //				Assets.playSound(Assets.clickSound);
@@ -56,6 +74,12 @@ public class World {
 					showTurn--;
 				}
 				turn++;
+				current *= number[2];
+				
+				number[0] = rand.nextInt(50);
+				number[1] = rand.nextInt(50);
+				number[2] = rand.nextInt(10);
+				number[3] = rand.nextInt(10);
 			}
 			if (choice4Bounds.contains(touchPoint.x, touchPoint.y)) {
 //				Assets.playSound(Assets.clickSound);
@@ -63,6 +87,12 @@ public class World {
 					showTurn--;
 				}
 				turn++;
+				current /= number[3];
+				
+				number[0] = rand.nextInt(50);
+				number[1] = rand.nextInt(50);
+				number[2] = rand.nextInt(10);
+				number[3] = rand.nextInt(10);
 			}
 			if(showTurn == 0) {
 				return;

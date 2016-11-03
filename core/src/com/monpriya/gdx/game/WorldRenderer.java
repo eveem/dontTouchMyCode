@@ -16,9 +16,15 @@ public class WorldRenderer {
 	private Texture nowImage;
 	private Texture taskNumber;
 	private Texture taskImage;
+	private Texture choiceNumber;
+	private Texture choiceImage;
+	private Texture operatorShow;
 	private SpriteBatch batch;
 	private World world;
 	private String[] imageName = {"zero.jpg", "one.jpg", "two.jpg", "three.jpg", "four.jpg", "five.jpg", "six.jpg", "seven.jpg", "eight.jpg", "nine.jpg"};
+	private String[] operator = {"plus.jpg", "minus.jpg", "mul.jpg", "div.jpg"};
+	private float choicePointX[] = {500, 900, 500, 900};
+	private float choicePointY[] = {100, 100, 50, 50};
 	
 	public WorldRenderer (ProjectGame game, World world) {
 		this.world = world;
@@ -30,6 +36,7 @@ public class WorldRenderer {
         turnImage = new Texture("turn.jpg");
         nowImage = new Texture("now.jpg");
         taskImage = new Texture("task.jpg");
+        choiceImage = new Texture("choice.jpg");
     }
 	
 	public void render () {
@@ -41,6 +48,7 @@ public class WorldRenderer {
 		renderTurnNumber();
 		renderTask();
 		renderNow();
+		renderChoice();
 		batch.end();
     }
 	
@@ -82,11 +90,24 @@ public class WorldRenderer {
 	}
 	
 	public void renderTask () {
-//		System.out.println(world.task);
 		batch.draw(taskImage, 950, 710);
 		taskNumber = new Texture(imageName[world.task/10]);
     	batch.draw(taskNumber, 850, 710);
     	taskNumber = new Texture(imageName[world.task%10]);
     	batch.draw(taskNumber, 895, 710);
+	}
+	
+	public void renderChoice () {
+		batch.draw(choiceImage, 100, 100);
+		for(int i=0; i<4; i++) {
+			operatorShow = new Texture(operator[i]);
+			batch.draw(operatorShow, choicePointX[i], choicePointY[i]);
+			if(world.number[i]/10 != 0) {
+				choiceNumber = new Texture(imageName[world.number[i]/10]);
+				batch.draw(choiceNumber, choicePointX[i]+50, choicePointY[i]);
+			}
+			choiceNumber = new Texture(imageName[world.number[i]%10]);
+			batch.draw(choiceNumber, choicePointX[i]+100, choicePointY[i]);
+		}
 	}
 }
