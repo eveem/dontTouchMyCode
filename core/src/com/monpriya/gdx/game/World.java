@@ -10,14 +10,17 @@ import com.badlogic.gdx.math.Vector3;
 public class World {
 	
 	public int turn;
+	public int showTurn;
 	public final Random rand;
 	OrthographicCamera guiCam;
 	Vector3 touchPoint;
 	Rectangle choice1Bounds, choice2Bounds, choice3Bounds, choice4Bounds;
+	public int answer;
 	
 	public World (ProjectGame game) {
 		rand = new Random();
 		this.turn = 0;
+		this.showTurn = 10;
 		guiCam = new OrthographicCamera(800, 800);
 		guiCam.position.set(800 / 2, 800 / 2, 0);
 		choice1Bounds = new Rectangle(-130, -295, 260, 100);
@@ -25,6 +28,7 @@ public class World {
 		choice3Bounds = new Rectangle(-130, -390, 260, 100);
 		choice4Bounds = new Rectangle(130, -390, 260, 100);
 		touchPoint = new Vector3();
+		answer = rand.nextInt(100);
 	}
 	
 	public void update () {
@@ -34,23 +38,23 @@ public class World {
 			System.out.println(touchPoint.y);
 			if (choice1Bounds.contains(touchPoint.x, touchPoint.y)) {
 //				Assets.playSound(Assets.clickSound);
-				System.out.println("1");
 				turn++;
 			}
 			if (choice2Bounds.contains(touchPoint.x, touchPoint.y)) {
 //				Assets.playSound(Assets.clickSound);
-				System.out.println("2");
 				turn++;
 			}
 			if (choice3Bounds.contains(touchPoint.x, touchPoint.y)) {
 //				Assets.playSound(Assets.clickSound);
-				System.out.println("3");
 				turn++;
 			}
 			if (choice4Bounds.contains(touchPoint.x, touchPoint.y)) {
 //				Assets.playSound(Assets.clickSound);
-				System.out.println("4");
 				turn++;
+			}
+			if(turn%2==1)
+			{
+				showTurn--;
 			}
 		}
 	}
