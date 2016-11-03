@@ -36,6 +36,8 @@ public class MainMenuScreen extends ScreenAdapter {
 	public void update () {
 		if (Gdx.input.justTouched()) {
 			guiCam.unproject(touchPoint.set(Gdx.input.getX(), Gdx.input.getY(), 0));
+//			System.out.println(touchPoint.x);
+//			System.out.println(touchPoint.y);
 			if (playBounds.contains(touchPoint.x, touchPoint.y)) {
 //				Assets.playSound(Assets.clickSound);
 				game.setScreen(new GameScreen(game));
@@ -61,7 +63,7 @@ public class MainMenuScreen extends ScreenAdapter {
 	
 	@Override
 	public void render (float delta) {
-		 update();
+		update();
 		draw();
 	}
 	

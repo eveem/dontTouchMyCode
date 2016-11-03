@@ -11,14 +11,14 @@ public class GameScreen extends ScreenAdapter {
 	
 	public GameScreen (ProjectGame game) {
 		this.game = game;
-		world = new World();
+		world = new World(game);
 		worldrenderer = new WorldRenderer(game, world);
 		answer = 0;
 	}
 	
 	@Override
 	public void render (float delta) {
-//		update();
+		world.update();
 		draw();
 	}
 	
