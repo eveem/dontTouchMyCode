@@ -16,6 +16,7 @@ public class World {
 	Vector3 touchPoint;
 	Rectangle choice1Bounds, choice2Bounds, choice3Bounds, choice4Bounds;
 	public int task;
+	public int current;
 	
 	public World (ProjectGame game) {
 		rand = new Random();
@@ -29,33 +30,41 @@ public class World {
 		choice4Bounds = new Rectangle(130, -390, 260, 100);
 		touchPoint = new Vector3();
 		task = rand.nextInt(100);
+		current = 0;
 	}
 	
 	public void update () {
 		if (Gdx.input.justTouched()) {
 			guiCam.unproject(touchPoint.set(Gdx.input.getX(), Gdx.input.getY(), 0));
-			System.out.println(touchPoint.x);
-			System.out.println(touchPoint.y);
 			if (choice1Bounds.contains(touchPoint.x, touchPoint.y)) {
 //				Assets.playSound(Assets.clickSound);
+				if(turn%2==1) {
+					showTurn--;
+				}
 				turn++;
 			}
 			if (choice2Bounds.contains(touchPoint.x, touchPoint.y)) {
 //				Assets.playSound(Assets.clickSound);
+				if(turn%2==1) {
+					showTurn--;
+				}
 				turn++;
 			}
 			if (choice3Bounds.contains(touchPoint.x, touchPoint.y)) {
 //				Assets.playSound(Assets.clickSound);
+				if(turn%2==1) {
+					showTurn--;
+				}
 				turn++;
 			}
 			if (choice4Bounds.contains(touchPoint.x, touchPoint.y)) {
 //				Assets.playSound(Assets.clickSound);
+				if(turn%2==1) {
+					showTurn--;
+				}
 				turn++;
 			}
-			if(turn%2==0) {
-				showTurn--;
-			}
-			if(turn<=0) {
+			if(showTurn == 0) {
 				return;
 			}
 		}
