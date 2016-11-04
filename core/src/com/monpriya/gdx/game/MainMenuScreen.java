@@ -36,20 +36,14 @@ public class MainMenuScreen extends ScreenAdapter {
 	public void update () {
 		if (Gdx.input.justTouched()) {
 			guiCam.unproject(touchPoint.set(Gdx.input.getX(), Gdx.input.getY(), 0));
-//			System.out.println(touchPoint.x);
-//			System.out.println(touchPoint.y);
 			if (playBounds.contains(touchPoint.x, touchPoint.y)) {
-//				Assets.playSound(Assets.clickSound);
 				game.setScreen(new GameScreen(game));
 				return;
 			}
-//			if (howtoBounds.contains(touchPoint.x, touchPoint.y)) {
-//				Assets.playSound(Assets.clickSound);
-//				game.setScreen(new HowtoScreen(game));
-//				return;
-//			}
+			if (howtoBounds.contains(touchPoint.x, touchPoint.y)) {
+				return;
+			}
 			if (exitBounds.contains(touchPoint.x, touchPoint.y)) {
-//				Assets.playSound(Assets.clickSound);
 				Gdx.app.exit();
 			}
 		}

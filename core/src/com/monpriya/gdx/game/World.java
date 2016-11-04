@@ -33,71 +33,50 @@ public class World {
 		task = rand.nextInt(100);
 		current = 0;
 		
-		number[0] = rand.nextInt(50);
-		number[1] = rand.nextInt(50);
-		number[2] = rand.nextInt(10);
-		number[3] = rand.nextInt(10);
+		generateNewChoice();
 	}
 	
 	public void update () {
+		int clicked = -1;
 		if (Gdx.input.justTouched()) {
 			guiCam.unproject(touchPoint.set(Gdx.input.getX(), Gdx.input.getY(), 0));
 			if (choice1Bounds.contains(touchPoint.x, touchPoint.y)) {
-//				Assets.playSound(Assets.clickSound);
-				if(turn%2==1) {
-					showTurn--;
-				}
-				turn++;
-				current += number[0];
-				
-				number[0] = rand.nextInt(50);
-				number[1] = rand.nextInt(50);
-				number[2] = rand.nextInt(10);
-				number[3] = rand.nextInt(10);
+				clicked = 0;
+				current += number[clicked];
 			}
 			if (choice2Bounds.contains(touchPoint.x, touchPoint.y)) {
-//				Assets.playSound(Assets.clickSound);
-				if(turn%2==1) {
-					showTurn--;
-				}
-				turn++;
-				current -= number[1];
-				
-				number[0] = rand.nextInt(50);
-				number[1] = rand.nextInt(50);
-				number[2] = rand.nextInt(10);
-				number[3] = rand.nextInt(10);
+				clicked = 1;
+				current -= number[clicked];
 			}
 			if (choice3Bounds.contains(touchPoint.x, touchPoint.y)) {
-//				Assets.playSound(Assets.clickSound);
-				if(turn%2==1) {
-					showTurn--;
-				}
-				turn++;
-				current *= number[2];
-				
-				number[0] = rand.nextInt(50);
-				number[1] = rand.nextInt(50);
-				number[2] = rand.nextInt(10);
-				number[3] = rand.nextInt(10);
+				clicked = 2;
+				current *= number[clicked];
 			}
 			if (choice4Bounds.contains(touchPoint.x, touchPoint.y)) {
-//				Assets.playSound(Assets.clickSound);
-				if(turn%2==1) {
+				clicked = 3;
+				current /= number[clicked];
+			}
+			
+			if (showTurn == 0) {
+				Gdx.app.exit();
+			}
+			
+			if (clicked != -1) {
+				if(turn%2 == 1) {
 					showTurn--;
 				}
-				turn++;
-				current /= number[3];
 				
-				number[0] = rand.nextInt(50);
-				number[1] = rand.nextInt(50);
-				number[2] = rand.nextInt(10);
-				number[3] = rand.nextInt(10);
-			}
-			if(showTurn == 0) {
-				return;
+				turn++;
+				generateNewChoice();
 			}
 		}
+	}
+	
+	public void generateNewChoice () {
+		number[0] = rand.nextInt(50);
+		number[1] = rand.nextInt(50);
+		number[2] = rand.nextInt(10);
+		number[3] = rand.nextInt(8) + 1;
 	}
 	
 }

@@ -57,7 +57,7 @@ public class WorldRenderer {
 	}
 	
 	public void renderTurnBar () {
-		if (world.turn%2==0) {
+		if (world.turn%2 == 0) {
 			batch.draw(leftturnImage, 0, 628);
 			batch.draw(whitebarImage, 600, 628);
 		}
@@ -76,24 +76,24 @@ public class WorldRenderer {
         	batch.draw(turnNumber, 598, 680);
         }
         else {
-        	turnNumber = new Texture(imageName[world.showTurn%10]);
+        	turnNumber = new Texture(imageName[world.showTurn % 10]);
         	batch.draw(turnNumber, 570, 680);
         }
 	}
 	
 	public void renderNow () {
 		batch.draw(nowImage, 60, 710);
-		taskNumber = new Texture(imageName[world.current/10]);
+		taskNumber = new Texture(imageName[world.current / 10]);
     	batch.draw(taskNumber, 235, 710);
-    	taskNumber = new Texture(imageName[world.current%10]);
+    	taskNumber = new Texture(imageName[world.current % 10]);
     	batch.draw(taskNumber, 280, 710);
 	}
 	
 	public void renderTask () {
 		batch.draw(taskImage, 950, 710);
-		taskNumber = new Texture(imageName[world.task/10]);
+		taskNumber = new Texture(imageName[world.task / 10]);
     	batch.draw(taskNumber, 850, 710);
-    	taskNumber = new Texture(imageName[world.task%10]);
+    	taskNumber = new Texture(imageName[world.task % 10]);
     	batch.draw(taskNumber, 895, 710);
 	}
 	
@@ -103,11 +103,11 @@ public class WorldRenderer {
 			operatorShow = new Texture(operator[i]);
 			batch.draw(operatorShow, choicePointX[i], choicePointY[i]);
 			if(world.number[i]/10 != 0) {
-				choiceNumber = new Texture(imageName[world.number[i]/10]);
-				batch.draw(choiceNumber, choicePointX[i]+50, choicePointY[i]);
+				choiceNumber = new Texture(imageName[world.number[i] / 10]);
+				batch.draw(choiceNumber, choicePointX[i] + 50, choicePointY[i]);
 			}
-			choiceNumber = new Texture(imageName[world.number[i]%10]);
-			batch.draw(choiceNumber, choicePointX[i]+100, choicePointY[i]);
+			choiceNumber = new Texture(imageName[world.number[i] % 10]);
+			batch.draw(choiceNumber, choicePointX[i] + 100, choicePointY[i]);
 		}
 	}
 }
