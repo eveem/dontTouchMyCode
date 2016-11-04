@@ -102,7 +102,7 @@ public class WorldRenderer {
 		for(int i=0; i<4; i++) {
 			operatorShow = new Texture(operator[i]);
 			batch.draw(operatorShow, choicePointX[i], choicePointY[i]);
-			if(world.number[i]/10 != 0) {
+			if (world.number[i]/10 != 0) {
 				choiceNumber = new Texture(imageName[world.number[i] / 10]);
 				batch.draw(choiceNumber, choicePointX[i] + 50, choicePointY[i]);
 			}

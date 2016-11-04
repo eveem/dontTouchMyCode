@@ -62,10 +62,9 @@ public class World {
 			}
 			
 			if (clicked != -1) {
-				if(turn%2 == 1) {
+				if (turn%2 == 1) {
 					showTurn--;
 				}
-				
 				turn++;
 				generateNewChoice();
 			}
