@@ -6,12 +6,12 @@ public class GameScreen extends ScreenAdapter {
 	
 	ProjectGame game;
 	World world;
-	WorldRenderer worldrenderer;
+	WorldRenderer worldRenderer;
 	
 	public GameScreen (ProjectGame game) {
 		this.game = game;
 		world = new World(game);
-		worldrenderer = new WorldRenderer(game, world);
+		worldRenderer = new WorldRenderer(game, world);
 	}
 	
 	@Override
@@ -21,6 +21,6 @@ public class GameScreen extends ScreenAdapter {
 	}
 	
 	public void draw () {
-		worldrenderer.render();
+		worldRenderer.render();
 	}
 }
