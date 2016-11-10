@@ -69,7 +69,7 @@ public class WorldRenderer {
 	
 	public void renderTurnNumber () {
         batch.draw(turnImage, 500, 740);
-		if(world.showTurn == 10) {
+		if (world.showTurn == 10) {
         	turnNumber = new Texture(imageName[1]);
         	batch.draw(turnNumber, 543, 680);
         	turnNumber = new Texture(imageName[0]);
@@ -79,6 +79,23 @@ public class WorldRenderer {
         	turnNumber = new Texture(imageName[world.showTurn % 10]);
         	batch.draw(turnNumber, 570, 680);
         }
+		
+		if (world.showTurn == 0) {
+			batch.draw(whitebarImage, 0, 628);
+			batch.draw(whitebarImage, 600, 628);
+
+			Texture winScreen;
+			if (world.current < world.task) {
+				winScreen = new Texture("bluewin.jpg");
+			}
+			else if (world.current > world.task) {
+				winScreen = new Texture("redwin.jpg");
+			}
+			else {
+				winScreen = new Texture("draw.jpg");
+			}
+			batch.draw(winScreen, 0, 222);
+		}
 	}
 	
 	public void renderNowScore () {

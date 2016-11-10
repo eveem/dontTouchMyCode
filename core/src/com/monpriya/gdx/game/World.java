@@ -57,16 +57,16 @@ public class World {
 				current /= number[clicked];
 			}
 			
-			if (showTurn == 0) {
-				Gdx.app.exit();
-			}
-			
 			if (clicked != -1) {
-				if (turn%2 == 1) {
+				if (turn % 2 == 1) {
 					showTurn--;
 				}
 				turn++;
 				generateNewChoice();
+			}
+			
+			if (turn == 21) {
+				Gdx.app.exit();
 			}
 		}
 	}
