@@ -30,7 +30,7 @@ public class World {
 		choice3Bounds = new Rectangle(-130, -390, 260, 100);
 		choice4Bounds = new Rectangle(130, -390, 260, 100);
 		touchPoint = new Vector3();
-		task = rand.nextInt(100);
+		task = rand.nextInt(100); 
 		current = 0;
 		
 		generateNewChoice();
@@ -72,9 +72,21 @@ public class World {
 	}
 	
 	public void generateNewChoice () {
-		number[0] = rand.nextInt(50);
-		number[1] = rand.nextInt(50);
-		number[2] = rand.nextInt(10);
+		number[0] = rand.nextInt(30);
+		while (current + number[0] >= 100) {
+			number[0] = rand.nextInt(30);
+		}
+		
+		number[1] = rand.nextInt(30);
+		while (current - number[1] < 0) {
+			number[1] = rand.nextInt(30);
+		}
+		
+		number[2] = rand.nextInt(20);
+		while (current * number[2] >= 100) {
+			number[2] = rand.nextInt(20);
+		}
+		
 		number[3] = rand.nextInt(8) + 1;
 	}
 	

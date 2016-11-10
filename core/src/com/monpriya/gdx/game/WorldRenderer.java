@@ -14,11 +14,11 @@ public class WorldRenderer {
 	private Texture turnNumber;
 	private Texture turnImage;
 	private Texture nowImage;
-	private Texture taskNumber;
 	private Texture taskImage;
 	private Texture choiceNumber;
 	private Texture choiceImage;
 	private Texture operatorShow;
+	private Texture carryTexture;
 	private SpriteBatch batch;
 	private World world;
 	private String[] imageName = {"zero.jpg", "one.jpg", "two.jpg", "three.jpg", "four.jpg", "five.jpg", "six.jpg", "seven.jpg", "eight.jpg", "nine.jpg"};
@@ -47,7 +47,7 @@ public class WorldRenderer {
 		renderTurnBar();
 		renderTurnNumber();
 		renderTask();
-		renderNow();
+		renderNowScore();
 		renderChoice();
 		batch.end();
     }
@@ -57,7 +57,7 @@ public class WorldRenderer {
 	}
 	
 	public void renderTurnBar () {
-		if (world.turn%2 == 0) {
+		if (world.turn % 2 == 0) {
 			batch.draw(leftturnImage, 0, 628);
 			batch.draw(whitebarImage, 600, 628);
 		}
@@ -81,20 +81,20 @@ public class WorldRenderer {
         }
 	}
 	
-	public void renderNow () {
+	public void renderNowScore () {
 		batch.draw(nowImage, 60, 710);
-		taskNumber = new Texture(imageName[world.current / 10]);
-    	batch.draw(taskNumber, 235, 710);
-    	taskNumber = new Texture(imageName[world.current % 10]);
-    	batch.draw(taskNumber, 280, 710);
+		carryTexture = new Texture(imageName[world.current / 10]);
+    	batch.draw(carryTexture, 235, 710);
+    	carryTexture = new Texture(imageName[world.current % 10]);
+    	batch.draw(carryTexture, 280, 710);
 	}
 	
 	public void renderTask () {
 		batch.draw(taskImage, 950, 710);
-		taskNumber = new Texture(imageName[world.task / 10]);
-    	batch.draw(taskNumber, 850, 710);
-    	taskNumber = new Texture(imageName[world.task % 10]);
-    	batch.draw(taskNumber, 895, 710);
+		carryTexture = new Texture(imageName[world.task / 10]);
+    	batch.draw(carryTexture, 850, 710);
+    	carryTexture = new Texture(imageName[world.task % 10]);
+    	batch.draw(carryTexture, 895, 710);
 	}
 	
 	public void renderChoice () {
