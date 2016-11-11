@@ -40,6 +40,10 @@ public class WorldRenderer {
     }
 	
 	public void render () {
+		float deltaTime = Gdx.graphics.getDeltaTime();
+		world.totalTime -= deltaTime;
+		System.out.println(world.totalTime);
+		System.out.println(deltaTime);
 		GL20 gl = Gdx.gl;
 		gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();

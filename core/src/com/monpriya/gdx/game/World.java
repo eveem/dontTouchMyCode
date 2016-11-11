@@ -18,6 +18,7 @@ public class World {
 	public int task;
 	public int current;
 	public int number[] = new int [4];
+	public float totalTime;
 	
 	public World (ProjectGame game) {
 		rand = new Random();
@@ -39,6 +40,7 @@ public class World {
 	public void update () {
 		int clicked = -1;
 		if (Gdx.input.justTouched()) {
+			totalTime = 10;
 			guiCam.unproject(touchPoint.set(Gdx.input.getX(), Gdx.input.getY(), 0));
 			if (choice1Bounds.contains(touchPoint.x, touchPoint.y)) {
 				clicked = 0;
