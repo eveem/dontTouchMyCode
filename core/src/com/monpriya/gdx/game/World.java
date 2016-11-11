@@ -86,12 +86,12 @@ public class World {
 			number[1] = rand.nextInt(50);
 		}
 		
-		number[2] = rand.nextInt(20) + 1;
+		number[2] = rand.nextInt(30) + 1;
 		while (current * number[2] >= 100) {
-			number[2] = rand.nextInt(20) + 1;
+			number[2] = rand.nextInt(30) + 1;
 		}
 		
-		number[3] = rand.nextInt(9) + 1;
+		number[3] = rand.nextInt(5) + 1;
 	}
 	
 }
