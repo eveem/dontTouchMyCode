@@ -42,8 +42,6 @@ public class WorldRenderer {
 	public void render () {
 		float deltaTime = Gdx.graphics.getDeltaTime();
 		world.totalTime -= deltaTime;
-		System.out.println(world.totalTime);
-		System.out.println(deltaTime);
 		GL20 gl = Gdx.gl;
 		gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
@@ -61,13 +59,16 @@ public class WorldRenderer {
 	}
 	
 	public void renderTurnBar () {
+		world.timer += 1;
 		if (world.turn % 2 == 0) {
 			batch.draw(leftturnImage, 0, 628);
-			batch.draw(whitebarImage, 600, 628);
+			batch.draw(whitebarImage, 600 + world.timer, 628);
+			batch.draw(whitebarImage, 600 - world.timer, 628);
 		}
 		else {
 			batch.draw(whitebarImage, 0, 628);
-			batch.draw(rightturnImage, 600, 628);
+			batch.draw(whitebarImage, 0 + world.timer, 628);
+			batch.draw(rightturnImage, 600 + world.timer, 628);
 		}
 	}
 	
