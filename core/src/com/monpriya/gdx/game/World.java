@@ -76,22 +76,22 @@ public class World {
 	}
 	
 	public void generateNewChoice () {
-		number[0] = rand.nextInt(30);
+		number[0] = rand.nextInt(50);
 		while (current + number[0] >= 100) {
-			number[0] = rand.nextInt(30);
+			number[0] = rand.nextInt(50);
 		}
 		
-		number[1] = rand.nextInt(30);
+		number[1] = rand.nextInt(50);
 		while (current - number[1] < 0) {
-			number[1] = rand.nextInt(30);
+			number[1] = rand.nextInt(50);
 		}
 		
-		number[2] = rand.nextInt(20);
+		number[2] = rand.nextInt(20) + 1;
 		while (current * number[2] >= 100) {
-			number[2] = rand.nextInt(20);
+			number[2] = rand.nextInt(20) + 1;
 		}
 		
-		number[3] = rand.nextInt(8) + 1;
+		number[3] = rand.nextInt(9) + 1;
 	}
 	
 }

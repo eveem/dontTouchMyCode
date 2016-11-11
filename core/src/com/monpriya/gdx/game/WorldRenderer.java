@@ -18,7 +18,7 @@ public class WorldRenderer {
 	private Texture choiceNumber;
 	private Texture choiceImage;
 	private Texture operatorShow;
-	private Texture carryTexture;
+	private Texture[] carryTexture = new Texture [2];
 	private SpriteBatch batch;
 	private World world;
 	private String[] imageName = {"zero.jpg", "one.jpg", "two.jpg", "three.jpg", "four.jpg", "five.jpg", "six.jpg", "seven.jpg", "eight.jpg", "nine.jpg"};
@@ -111,25 +111,28 @@ public class WorldRenderer {
 		}
 	}
 	
+	public void generateTexture (int number) {
+		carryTexture[0] = new Texture(imageName[number / 10]);
+		carryTexture[1] = new Texture(imageName[number % 10]);
+	}
+	
 	public void renderNowScore () {
+		generateTexture (world.current);
 		batch.draw(nowImage, 60, 710);
-		carryTexture = new Texture(imageName[world.current / 10]);
-    	batch.draw(carryTexture, 235, 710);
-    	carryTexture = new Texture(imageName[world.current % 10]);
-    	batch.draw(carryTexture, 280, 710);
+    	batch.draw(carryTexture[0], 235, 710);
+    	batch.draw(carryTexture[1], 280, 710);
 	}
 	
 	public void renderTask () {
+		generateTexture (world.task);
 		batch.draw(taskImage, 950, 710);
-		carryTexture = new Texture(imageName[world.task / 10]);
-    	batch.draw(carryTexture, 850, 710);
-    	carryTexture = new Texture(imageName[world.task % 10]);
-    	batch.draw(carryTexture, 895, 710);
+    	batch.draw(carryTexture[0], 850, 710);
+    	batch.draw(carryTexture[1], 895, 710);
 	}
 	
 	public void renderChoice () {
 		batch.draw(choiceImage, 100, 100);
-		for(int i=0; i<4; i++) {
+		for(int i = 0; i < 4; i++) {
 			operatorShow = new Texture(operator[i]);
 			batch.draw(operatorShow, choicePointX[i], choicePointY[i]);
 			if (world.number[i]/10 != 0) {
