@@ -64,11 +64,19 @@ public class WorldRenderer {
 			batch.draw(leftturnImage, 0, 628);
 			batch.draw(whitebarImage, 600 + world.timer, 628);
 			batch.draw(whitebarImage, 600 - world.timer, 628);
+			if (world.timer < 0) {
+				world.turn++;
+				return ;
+			}
 		}
 		else {
 			batch.draw(whitebarImage, 0, 628);
 			batch.draw(whitebarImage, 0 + world.timer, 628);
 			batch.draw(rightturnImage, 600 + world.timer, 628);
+			if (world.timer < 0) {
+				world.turn++;
+				return ;
+			}
 		}
 	}
 	
