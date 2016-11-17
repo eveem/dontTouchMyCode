@@ -41,10 +41,10 @@ public class WorldRenderer {
 		batch.begin();
 		renderBackground();
 		renderTurnBar();
-		renderTurnNumber();
 		renderTask();
-//		renderNowScore();
+		renderNowScore();
 		renderChoice();
+		renderTurnNumber();
 		batch.end();
     }
 	
@@ -102,9 +102,9 @@ public class WorldRenderer {
 	}
 	
 	public void renderNowScore () {
-//		generateTexture(world.current, now);
-    	batch.draw(carryTexture[0], 235, 710);
-    	batch.draw(carryTexture[1], 280, 710);
+		generateTexture(world.current, "score");
+    	batch.draw(carryTexture[0], 280, 250);
+    	batch.draw(carryTexture[1], 590, 250);
 	}
 	
 	public void renderTask () {
