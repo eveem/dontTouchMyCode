@@ -15,13 +15,14 @@ public class WorldRenderer {
 	private Texture choiceNumber;
 	private Texture choiceImage;
 	private Texture operatorShow;
+	private Texture[] frame = new Texture [4];
 	private Texture[] carryTexture = new Texture [2];
 	private SpriteBatch batch;
 	private World world;
 	private String[] imageName = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
 	private String[] operator = {"plus.jpg", "minus.jpg", "mul.jpg", "div.jpg"};
 	private float choicePointX[] = {500, 900, 500, 900};
-	private float choicePointY[] = {125, 125, 50, 50};
+	private float choicePointY[] = {135, 135, 45, 45};
 	
 	public WorldRenderer (ProjectGame game, World world) {
 		this.world = world;
@@ -31,6 +32,10 @@ public class WorldRenderer {
         rightturnImage = new Texture("rightTurn.jpg");
         whitebarImage = new Texture("whiteBar.jpg");
         choiceImage = new Texture("choice.jpg");
+        for (int i = 0; i < 4; i++) {
+        	int no = i + 1;
+        	frame[i] = new Texture("frame" + no + ".png");
+        }
     }
 	
 	public void render () {
@@ -124,6 +129,7 @@ public class WorldRenderer {
 			}
 			choiceNumber = new Texture(imageName[world.number[i] % 10] + ".jpg");
 			batch.draw(choiceNumber, choicePointX[i] + 100, choicePointY[i]);
+			batch.draw(frame[i], choicePointX[i] - 20, choicePointY[i] - 2);
 		}
 	}
 }
