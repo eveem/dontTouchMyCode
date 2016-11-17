@@ -24,7 +24,7 @@ public class World {
 	public World (ProjectGame game) {
 		rand = new Random();
 		this.turn = 0;
-		this.showTurn = 10;
+		this.showTurn = 5;
 		guiCam = new OrthographicCamera(800, 800);
 		guiCam.position.set(800 / 2, 800 / 2, 0);
 		choice1Bounds = new Rectangle(-130, -295, 260, 100);
@@ -69,7 +69,7 @@ public class World {
 				generateNewChoice();
 			}
 			
-			if (turn == 21) {
+			if (turn == 11) {
 				Gdx.app.exit();
 			}
 		}
