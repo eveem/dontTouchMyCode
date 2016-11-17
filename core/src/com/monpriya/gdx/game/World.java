@@ -40,9 +40,8 @@ public class World {
 	
 	public void update () {
 		int clicked = -1;
-		if (Gdx.input.justTouched()) {
+		if (Gdx.input.justTouched() || timer > 600) {
 			totalTime = 10;
-			timer = 1;
 			guiCam.unproject(touchPoint.set(Gdx.input.getX(), Gdx.input.getY(), 0));
 			if (choice1Bounds.contains(touchPoint.x, touchPoint.y)) {
 				clicked = 0;
@@ -61,11 +60,12 @@ public class World {
 				current /= number[clicked];
 			}
 			
-			if (clicked != -1) {
+			if (clicked != -1 || timer > 600) {
 				if (turn % 2 == 1) {
 					showTurn--;
 				}
 				turn++;
+				timer = 1;
 				generateNewChoice();
 			}
 			

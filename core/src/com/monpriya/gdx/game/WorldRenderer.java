@@ -41,7 +41,7 @@ public class WorldRenderer {
 		batch.begin();
 		renderBackground();
 		renderTurnBar();
-//		renderTurnNumber();
+		renderTurnNumber();
 		renderTask();
 //		renderNowScore();
 		renderChoice();
@@ -52,38 +52,30 @@ public class WorldRenderer {
 		batch.draw(backgroundImage, 0, 0);
 	}
 	
-	public void renderTurnBar () {
+	public boolean renderTurnBar () {
 		world.timer += 1;
 		if (world.turn % 2 == 0) {
-			batch.draw(leftturnImage, 0, 628);
-			batch.draw(whitebarImage, 600 + world.timer, 628);
-			batch.draw(whitebarImage, 600 - world.timer, 628);
-			if (world.timer < 0) {
-				world.turn++;
-				return ;
-			}
+			batch.draw(leftturnImage, 0 - world.timer, 628);
 		}
 		else {
-			batch.draw(whitebarImage, 0, 628);
-			batch.draw(whitebarImage, 0 + world.timer, 628);
 			batch.draw(rightturnImage, 600 + world.timer, 628);
-			if (world.timer < 0) {
-				world.turn++;
-				return ;
-			}
 		}
+		if (world.timer > 600) {
+			return true;
+		}
+		return false;
 	}
 	
 	public void renderTurnNumber () {
 		if (world.showTurn == 10) {
-        	turnNumber = new Texture(imageName[1]);
-        	batch.draw(turnNumber, 543, 680);
-        	turnNumber = new Texture(imageName[0]);
-        	batch.draw(turnNumber, 598, 680);
+        	turnNumber = new Texture(imageName[1] + "turn.jpg");
+        	batch.draw(turnNumber, 645, 693);
+        	turnNumber = new Texture(imageName[0] + "turn.jpg");
+        	batch.draw(turnNumber, 710, 693);
         }
         else {
-        	turnNumber = new Texture(imageName[world.showTurn % 10]);
-        	batch.draw(turnNumber, 570, 680);
+        	turnNumber = new Texture(imageName[world.showTurn % 10] + "turn.jpg");
+        	batch.draw(turnNumber, 710, 693);
         }
 		
 		if (world.showTurn == 0) {
